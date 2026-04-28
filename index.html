@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Syne:wght@600;700;800&amp;display=swap" rel="stylesheet">
 <style>
 :root{--bg:#08080b;--sf:#13131a;--sf2:#1a1a24;--p:#6366f1;--s:#ec4899;--a:#06b6d4;--w:#f59e0b;--t:#f1f5f9;--d:#94a3b8;--g:rgba(13,13,20,.72)}
-*{margin:0;padding:0;box-sizing:border-box;cursor:none}
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--t);font-family:"DM Sans",sans-serif;overflow-x:hidden;line-height:1.7}
 h1,h2,h3,.sy{font-family:"Syne",sans-serif}
@@ -25,8 +25,7 @@ h1,h2,h3,.sy{font-family:"Syne",sans-serif}
 .l-track{width:220px;height:3px;background:#1a1a2e;border-radius:4px;overflow:hidden}
 .l-bar{height:100%;width:0;background:linear-gradient(90deg,var(--p),var(--s),var(--a));animation:lb 2s cubic-bezier(.4,0,.2,1) forwards}
 @keyframes lb{to{width:100%}}
-#cd{position:fixed;width:8px;height:8px;background:var(--a);border-radius:50%;pointer-events:none;z-index:99999;box-shadow:0 0 12px var(--a),0 0 24px rgba(6,182,212,.3)}
-#cr{position:fixed;width:36px;height:36px;border:1.5px solid rgba(6,182,212,.5);border-radius:50%;pointer-events:none;z-index:99998;transition:transform .18s ease-out}
+
 nav{position:fixed;top:0;width:100%;padding:16px 8%;background:var(--g);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:9990;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.04)}
 .logo{font-family:"Syne";font-weight:800;font-size:1.1rem;letter-spacing:3px;background:linear-gradient(135deg,var(--p),var(--a));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nl{display:flex;gap:28px;list-style:none}
@@ -139,7 +138,6 @@ footer{padding:32px 8%;text-align:center;border-top:1px solid rgba(255,255,255,.
 .fc{width:240px;padding:28px 20px}
 .pg,.sg{grid-template-columns:1fr}
 section{padding:60px 6%}
-#cd,#cr{display:none}*{cursor:auto}
 }
 </style>
 </head>
@@ -147,7 +145,7 @@ section{padding:60px 6%}
 <div id="loader"><div class="l-init">ASV</div><div class="l-track"><div class="l-bar"></div></div></div>
 <div class="noise"></div>
 <div id="cbg"><canvas id="pCanvas"></canvas></div>
-<div id="cd"></div><div id="cr"></div>
+
 
 <nav>
 <div class="logo sy">ANIL.DEV</div>
@@ -203,7 +201,7 @@ section{padding:60px 6%}
 <div class="skc reveal">
 <h3>Technologies &amp; Tools</h3>
 <div class="chips">
-<span class="chip">Servlets</span><span class="chip">JDBC</span><span class="chip">Hibernate</span><span class="chip">Spring</span><span class="chip">Spring Boot</span><span class="chip">React</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Maven</span><span class="chip">Postman</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">DSA</span><span class="chip">LLD</span><span class="chip">SDLC</span>
+<span class="chip">Java (Spring Boot)</span><span class="chip">React</span><span class="chip">Tailwind CSS</span><span class="chip">MySQL</span><span class="chip">Redis</span><span class="chip">JWT</span><span class="chip">Razorpay</span><span class="chip">Cloudinary</span><span class="chip">Hibernate</span><span class="chip">JDBC</span><span class="chip">REST APIs</span><span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">OpenCV</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span><span class="chip">DSA</span><span class="chip">System Design</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Postman</span>
 </div>
 </div>
 </div>
@@ -212,6 +210,21 @@ section{padding:60px 6%}
 <section id="projects">
 <h2 class="st sy"><span class="nu">02</span>Featured Work</h2>
 <div class="pg">
+<div class="pc reveal">
+<div class="pe">&#x1F6D2;</div>
+<h3>Full-Stack E-Commerce Platform</h3>
+<p class="ds">Built a scalable full-stack e-commerce system with JWT authentication, role-based access, payment integration (Razorpay), Redis caching, and Cloudinary storage using Spring Boot and React.</p>
+<div class="chips"><span class="chip">Spring Boot</span><span class="chip">React</span><span class="chip">MySQL</span><span class="chip">Redis</span><span class="chip">Razorpay</span><span class="chip">JWT</span></div>
+<div class="chips" style="margin-top:10px">
+  <span class="chip">Security: JWT + OTP Verification</span>
+  <span class="chip">Storage: Cloudinary</span>
+  <span class="chip">Payments: Razorpay Integration</span>
+</div>
+<div class="akl">
+  <a href="https://github.com/vallabhuanil/ecommers_publicAccess" target="_blank">GitHub</a>
+  <a href="https://ecommers-full-stack-application.vercel.app/" target="_blank">Live Demo</a>
+</div>
+</div>
 <div class="pc reveal">
 <div class="pe">&#x1F4E6;</div>
 <h3>Postal Package Tracking System</h3>
@@ -222,15 +235,6 @@ section{padding:60px 6%}
   <span class="chip">Auth: OTP Email Verification</span>
   <span class="chip">Notifications: WhatsApp Cloud API</span>
 </div>
-<p class="ds" style="margin-top:10px">
-Built REST APIs using Spring Boot. Designed relational schema for shipment tracking.
-Implemented async notification system for real-time updates.
-</p>
-<div class="chips" style="margin-top:6px">
-  <span class="chip">POST /api/login</span>
-  <span class="chip">GET /api/track/{id}</span>
-  <span class="chip">POST /api/dispatch</span>
-</div>
 <div class="akl">
   <a href="https://github.com/vallabhuanil/hackthon-Postathon" target="_blank">GitHub</a>
   <a href="https://hackthon-postathon.vercel.app/" target="_blank">Live Demo</a>
@@ -239,21 +243,16 @@ Implemented async notification system for real-time updates.
 <div class="pc reveal">
 <div class="pe">&#x1FAC1;</div>
 <h3>Lung Nodule Detection</h3>
-<p class="ds">CNN-based model detecting lung nodules from DICOM CT scans using LIDC-IDRI dataset. Achieved 93.55% accuracy with Sequential CNN architecture and image preprocessing.</p>
-<div class="chips"><span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">OpenCV</span></div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil" target="_blank">GitHub</a>
-  <a href="#">Live Demo</a>
-</div>
+<p class="ds">Developed a CNN-based deep learning model achieving 93.55% accuracy for detecting lung nodules from CT scan images using TensorFlow and OpenCV.</p>
+<div class="chips"><span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">OpenCV</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span></div>
 </div>
 <div class="pc reveal">
 <div class="pe">&#x1F3D7;&#xFE0F;</div>
-<h3>Java DS Explorer</h3>
-<p class="ds">Modular Java Swing application demonstrating ArrayList, Stack, Queue, and LinkedList operations with separate modules for maintainability and OOP principles.</p>
-<div class="chips"><span class="chip">Java</span><span class="chip">Swing</span><span class="chip">OOP</span><span class="chip">Collections</span></div>
+<h3>Java DS Visualization System</h3>
+<p class="ds">Built a modular Java Swing application demonstrating operations of core data structures including ArrayList, Stack, Queue, and LinkedList using OOP principles.</p>
+<div class="chips"><span class="chip">Java</span><span class="chip">Swing</span><span class="chip">OOP</span><span class="chip">Collections</span><span class="chip">Layered Arch</span></div>
 <div class="akl">
-  <a href="https://github.com/vallabhuanil" target="_blank">GitHub</a>
-  <a href="#">Live Demo</a>
+  <a href="https://github.com/vallabhuanil/Java-DataStructure-selection-and-operations-System" target="_blank">GitHub</a>
 </div>
 </div>
 </div>
@@ -263,9 +262,10 @@ Implemented async notification system for real-time updates.
 <h2 class="st sy"><span class="nu">03</span>Timeline &amp; Milestones</h2>
 <div class="tl">
 <div class="ti"><div class="td">Sep 2022 â€” Present</div><h3>Vellore Institute of Technology, Amaravati</h3><p>Integrated M.Tech in Software Engineering. Focus on Backend Systems, System Design, and Data Structures.</p></div>
-<div class="ti"><div class="td">Mar 2026</div><h3>National Postathon â€” 2nd Place</h3><p>Ranked 2nd among 150 teams. Built AI-driven NLP complaint categorization system for Indian Post in 24-hour hackathon.</p></div>
+<div class="ti"><div class="td">Mar 2026</div><h3>National Postathon &mdash; 2nd Place</h3><p>Secured 2nd place among 150+ teams. Developed a full-stack postal tracking system with OTP authentication and WhatsApp API integration.</p></div>
 <div class="ti"><div class="td">2026</div><h3>Certification Milestones</h3><p>Completed Software Architecture (ScholarHat), System Design (Scaler), Java (Intellipaat, HackerRank), and SQL certifications.</p></div>
-<div class="ti"><div class="td">Aug 2020 â€” Jun 2022</div><h3>Narayana Junior College</h3><p>Board of Intermediate Education â€” Scored 91.8%</p></div>
+<div class="ti"><div class="td">Aug 2020 &mdash; Jun 2022</div><h3>Narayana Junior College</h3><p>Board of Intermediate Education &mdash; Scored 91.8%</p></div>
+<div class="ti"><div class="td">2020</div><h3>St.Johns Model High School</h3><p>Secondary Education (BSEAP) &mdash; Scored 97.1%</p></div>
 </div>
 </section>
 
@@ -281,8 +281,14 @@ Implemented async notification system for real-time updates.
 <div class="ec reveal">
 <h3>Narayana Junior College</h3>
 <div class="dg">Board of Intermediate Education</div>
-<div class="mt">Aug 2020 â€” Jun 2022</div>
+<div class="mt">Aug 2020 &mdash; Jun 2022</div>
 <span class="badge b2">91.8%</span>
+</div>
+<div class="ec reveal">
+<h3>St.Johns Model High School</h3>
+<div class="dg">Board of Secondary Education, Andhra Pradesh (BSEAP)</div>
+<div class="mt">Passed out in 2020</div>
+<span class="badge b2">97.1%</span>
 </div>
 </div>
 </section>
@@ -290,11 +296,11 @@ Implemented async notification system for real-time updates.
 <section id="achievements">
 <h2 class="st sy"><span class="nu">05</span>Achievements</h2>
 <div class="akc reveal">
-<h3><span style="font-size:1.4rem">&#x1F3C6;</span> Postathon (Indian Post) â€” 2nd Place</h3>
-<p style="color:var(--d);font-size:.9rem;margin-bottom:4px">Secured 2nd place among 150 teams by building an AI-driven complaint analysis system within a 24-hour national hackathon. Implemented NLP-based complaint categorization, intent detection, and priority tagging.</p>
+<h3><span style="font-size:1.4rem">&#x1F3C6;</span> Postathon (Indian Post) &mdash; 2nd Place</h3>
+<p style="color:var(--d);font-size:.9rem;margin-bottom:4px">Developed a full-stack postal tracking system with OTP authentication and WhatsApp API integration. Secured 2nd place among 150+ teams.</p>
 <div class="akl">
 <a href="https://drive.google.com/file/d/1D0vQAE24PB8eB4oWxA7Z8NjPNoA-mOrs/view" target="_blank">Certificate</a>
-<a href="https://github.com/vallabhuanil/hackthon-Postathon" target="_blank">GitHub</a>
+<a href="https://github.com/vallabhuanil/ecommers_publicAccess" target="_blank">GitHub</a>
 <a href="https://hackthon-postathon.vercel.app/" target="_blank">Live Demo</a>
 </div>
 </div>
@@ -316,8 +322,9 @@ Implemented async notification system for real-time updates.
 <div class="akc reveal">
 <h3>Scalable Backend Design</h3>
 <p style="color:var(--d);font-size:.9rem">
-Designed REST APIs with layered architecture (Controller &rarr; Service &rarr; Repository).
-Understood concepts like caching, load handling, and database indexing.
+Designed RESTful APIs with layered architecture (Controller &rarr; Service &rarr; Repository).
+Implemented Redis for efficient caching and JWT with RBAC for secure, scalable authentication.
+Optimized database performance through indexing and normalized relational schemas.
 </p>
 </div>
 </section>
@@ -326,10 +333,11 @@ Understood concepts like caching, load handling, and database indexing.
 <h2 class="st sy"><span class="nu">09</span>Technical Highlights</h2>
 <div class="akc reveal">
 <p style="color:var(--d);font-size:.9rem">
-&bull; Built REST APIs handling real-time tracking updates<br>
-&bull; Implemented OTP-based authentication system<br>
-&bull; Designed relational database schema for logistics system<br>
-&bull; Achieved 93.55% accuracy in CNN-based medical model
+&bull; Developed a Full-Stack E-Commerce platform with JWT RBAC and Razorpay<br>
+&bull; Built REST APIs handling real-time tracking updates with WhatsApp API<br>
+&bull; Implemented secure OTP-based email verification system<br>
+&bull; Designed scalable relational database schemas for complex systems<br>
+&bull; Achieved 93.55% accuracy in CNN-based lung nodule detection
 </p>
 </div>
 </section>
@@ -351,11 +359,7 @@ Understood concepts like caching, load handling, and database indexing.
 <script>
 // Loader
 window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hid')},2200)});
-// Cursor
-const cd=document.getElementById('cd'),cr=document.getElementById('cr');
-let mx=0,my=0,cx=0,cy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx-4+'px';cd.style.top=my-4+'px'});
-(function animCursor(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cr.style.left=cx-18+'px';cr.style.top=cy-18+'px';requestAnimationFrame(animCursor)})();
+
 // Hamburger
 document.getElementById('hamBtn').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
 document.querySelectorAll('.nl a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')}));
