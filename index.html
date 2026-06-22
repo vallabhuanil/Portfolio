@@ -7,431 +7,941 @@
 <meta name="description" content="Anil Sai Vallabhu - Java Backend Developer Portfolio">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Syne:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#08080b;--sf:#13131a;--sf2:#1a1a24;--p:#6366f1;--s:#ec4899;--a:#06b6d4;--w:#f59e0b;--t:#f1f5f9;--d:#94a3b8;--g:rgba(13,13,20,.72)}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t);font-family:"DM Sans",sans-serif;overflow-x:hidden;line-height:1.7}
-h1,h2,h3,.sy{font-family:"Syne",sans-serif}
-::-webkit-scrollbar{width:7px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:linear-gradient(var(--p),var(--s));border-radius:10px}
-#cbg{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 0%,#14142a,var(--bg) 70%)}
-.noise{position:fixed;inset:0;opacity:.04;pointer-events:none;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-#loader{position:fixed;inset:0;background:var(--bg);z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity .8s}
-#loader.hid{opacity:0;pointer-events:none}
-.l-init{font-size:4.5rem;font-family:"Syne";font-weight:800;background:linear-gradient(135deg,var(--p),var(--a),var(--s));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:24px;letter-spacing:4px}
-.l-track{width:220px;height:3px;background:#1a1a2e;border-radius:4px;overflow:hidden}
-.l-bar{height:100%;width:0;background:linear-gradient(90deg,var(--p),var(--s),var(--a));animation:lb 2s cubic-bezier(.4,0,.2,1) forwards}
-@keyframes lb{to{width:100%}}
+:root {
+  --bg-main: #0B0F19;
+  --bg-nav: rgba(11, 15, 25, 0.7);
+  --bg-card: rgba(255, 255, 255, 0.15);
+  --bg-card-hover: rgba(255, 255, 255, 0.22);
+  --border-light: rgba(255, 255, 255, 0.25);
+  --border-hover: rgba(255, 255, 255, 0.4);
+  --text-main: #F9FAFB;
+  --text-muted: #9CA3AF;
+  --accent-1: #60A5FA;
+  --accent-2: #818CF8;
+  --accent-gradient: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+}
 
-nav{position:fixed;top:0;width:100%;padding:16px 8%;background:var(--g);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:9990;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.04)}
-.logo{font-family:"Syne";font-weight:800;font-size:1.1rem;letter-spacing:3px;background:linear-gradient(135deg,var(--p),var(--a));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nl{display:flex;gap:28px;list-style:none}
-.nl a{text-decoration:none;color:var(--d);font-weight:500;font-size:.88rem;position:relative;transition:color .3s;padding-bottom:4px}
-.nl a:hover{color:var(--t)}
-.nl a::after{content:"";position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--s),var(--a));transition:width .35s;border-radius:2px}
-.nl a:hover::after{width:100%}
-.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px}
-.ham span{width:24px;height:2px;background:var(--t);border-radius:2px;transition:.3s}
-section{padding:100px 8%}
-.st{font-size:2.2rem;margin-bottom:48px;display:flex;align-items:center;gap:16px;text-transform:uppercase;letter-spacing:2px}
-.st .nu{color:var(--s);font-size:1rem;font-family:"DM Sans";font-weight:700}
-.st::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(99,102,241,.4),transparent)}
-#hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;gap:40px}
-.hl{flex:1.2}
-.htag{display:inline-block;padding:6px 18px;border:1px solid rgba(99,102,241,.3);border-radius:20px;font-size:.8rem;color:var(--a);letter-spacing:3px;margin-bottom:20px;text-transform:uppercase}
-.hname{font-size:clamp(2.8rem,7vw,5rem);font-weight:800;line-height:1.1;margin-bottom:16px;background:linear-gradient(90deg,#fff 0%,var(--p) 50%,#fff 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:sh 4s infinite linear}
-@keyframes sh{to{background-position:200%}}
-.hsub{font-size:1.15rem;color:var(--d);max-width:540px;margin-bottom:32px}
-.ctas{display:flex;gap:16px;flex-wrap:wrap}
-.btn{padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .35s;border:1.5px solid var(--p);display:inline-flex;align-items:center;gap:8px}
-.bf{background:linear-gradient(135deg,var(--p),#818cf8);color:#fff;border-color:transparent}
-.bg{color:var(--p);background:transparent}
-.btn:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(99,102,241,.25)}
-.hr{flex:1;display:flex;justify-content:center;perspective:800px}
-.fc{width:280px;padding:36px 28px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:20px;backdrop-filter:blur(12px);transform-style:preserve-3d;animation:cf 6s infinite ease-in-out}
-@keyframes cf{0%,100%{transform:translateY(0) rotateX(0) rotateY(0)}50%{transform:translateY(-18px) rotateX(4deg) rotateY(-4deg)}}
-.si{text-align:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.si:last-child{border:none}
-.sv{font-size:2rem;font-weight:800;font-family:"Syne";background:linear-gradient(135deg,var(--s),var(--w));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.sl{font-size:.78rem;color:var(--d);margin-top:2px;text-transform:uppercase;letter-spacing:1px}
-.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:36px}
-.skc{background:var(--sf);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,.04);transition:border-color .3s}
-.skc:hover{border-color:rgba(99,102,241,.3)}
-.skc h3{color:var(--a);font-size:.95rem;margin-bottom:20px;text-transform:uppercase;letter-spacing:1.5px}
-.bw{margin-bottom:14px}
-.bt{display:flex;justify-content:space-between;font-size:.85rem;margin-bottom:5px}
-.bt .pc{color:var(--s)}
-.btr{height:5px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
-.bf2{height:100%;width:0;border-radius:4px;transition:width 1.4s cubic-bezier(.22,.61,.36,1)}
-.c1{background:linear-gradient(90deg,var(--p),#818cf8)}
-.c2{background:linear-gradient(90deg,var(--s),#f472b6)}
-.c3{background:linear-gradient(90deg,var(--a),#22d3ee)}
-.c4{background:linear-gradient(90deg,var(--w),#fbbf24)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.chip{padding:5px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;font-size:.78rem;transition:all .3s}
-.chip:hover{border-color:var(--s);color:var(--s);background:rgba(236,72,153,.06)}
-.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
-.pc{background:var(--sf);padding:28px;border-radius:16px;border:1px solid rgba(255,255,255,.03);position:relative;overflow:hidden;transition:all .4s;display:flex;flex-direction:column}
-.pc::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.04),transparent);transition:.6s}
-.pc:hover::before{left:100%}
-.pc:hover{transform:translateY(-8px);border-color:var(--p);box-shadow:0 12px 40px rgba(99,102,241,.1)}
-.pe{font-size:2.2rem;margin-bottom:14px}
-.pc h3{font-size:1.1rem;margin-bottom:10px}
-.pc .ds{font-size:.88rem;color:var(--d);flex:1;margin-bottom:16px}
-.tl{position:relative;max-width:700px}
-.tl::before{content:"";position:absolute;left:0;top:0;width:2px;height:100%;background:linear-gradient(180deg,var(--p),var(--s),var(--a))}
-.ti{padding-left:32px;margin-bottom:36px;position:relative;opacity:0;transform:translateX(-20px);transition:all .6s cubic-bezier(.4,0,.2,1)}
-.ti.vis{opacity:1;transform:translateX(0)}
-.ti::before{content:"";position:absolute;left:-5px;top:4px;width:12px;height:12px;border-radius:50%;border:2px solid var(--a);background:var(--bg);transition:all .3s}
-.ti:hover::before{background:var(--a);box-shadow:0 0 12px var(--a)}
-.td{color:var(--s);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-.ti h3{font-size:1.05rem;margin-bottom:4px}
-.ti p{color:var(--d);font-size:.88rem}
-.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.cc{background:var(--sf);padding:20px 24px;border-radius:12px;border:1px solid rgba(255,255,255,.04);display:flex;justify-content:space-between;align-items:center;transition:all .3s}
-.cc:hover{border-color:rgba(245,158,11,.3);transform:translateX(4px)}
-.cc h4{font-size:.92rem;font-weight:600;margin-bottom:2px}
-.cc .is{font-size:.78rem;color:var(--d)}
-.cl{color:var(--w);text-decoration:none;font-size:.8rem;font-weight:600;padding:4px 14px;border:1px solid rgba(245,158,11,.3);border-radius:16px;transition:all .3s;white-space:nowrap}
-.cl:hover{background:rgba(245,158,11,.1);border-color:var(--w)}
-.eg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-.ec{background:var(--sf);padding:28px;border-radius:16px;border:1px solid rgba(255,255,255,.04);transition:all .3s}
-.ec:hover{border-color:rgba(6,182,212,.3)}
-.ec h3{font-size:1.05rem;margin-bottom:4px}
-.ec .dg{color:var(--a);font-size:.88rem;margin-bottom:4px}
-.ec .mt{font-size:.8rem;color:var(--d)}
-.badge{display:inline-block;padding:3px 12px;border-radius:12px;font-size:.75rem;font-weight:600;margin-top:8px}
-.b1{background:rgba(99,102,241,.15);color:#818cf8;border:1px solid rgba(99,102,241,.2)}
-.b2{background:rgba(6,182,212,.12);color:#22d3ee;border:1px solid rgba(6,182,212,.2)}
-.cw{text-align:center}
-.aw{width:130px;height:130px;margin:0 auto 40px;position:relative}
-.ac{width:100%;height:100%;background:linear-gradient(135deg,var(--p),var(--s));border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:2.5rem;font-family:"Syne";font-weight:800;color:#fff;position:relative;z-index:2}
-.rr{position:absolute;inset:0;border:2px solid var(--p);border-radius:50%;animation:ro 2.5s infinite ease-out}
-.rr:nth-child(2){animation-delay:.6s}
-.rr:nth-child(3){animation-delay:1.2s}
-@keyframes ro{to{transform:scale(1.7);opacity:0}}
-.ctg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:800px;margin:0 auto}
-.ctc{background:var(--sf);padding:24px;border-radius:14px;text-align:center;transition:all .3s;border:1px solid rgba(255,255,255,.03);text-decoration:none;color:var(--t)}
-.ctc:hover{background:var(--sf2);transform:translateY(-4px);border-color:rgba(245,158,11,.2)}
-.ci{font-size:1.8rem;margin-bottom:10px}
-.ctc p{font-size:.88rem;color:var(--d)}
-.ctc .lb{font-size:.75rem;color:var(--w);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.akc{background:var(--sf);padding:28px;border-radius:16px;border:1px solid rgba(255,255,255,.04);border-left:3px solid var(--w);transition:all .3s}
-.akc:hover{border-left-color:var(--s);transform:translateX(4px)}
-.akc h3{font-size:1.1rem;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.akl{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
-.akl a{color:var(--a);font-size:.82rem;text-decoration:none;border:1px solid rgba(6,182,212,.3);padding:3px 12px;border-radius:14px;transition:all .3s}
-.akl a:hover{background:rgba(6,182,212,.1)}
-footer{padding:32px 8%;text-align:center;border-top:1px solid rgba(255,255,255,.04);color:var(--d);font-size:.8rem}
-.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
-.reveal.vis{opacity:1;transform:translateY(0)}
-@media(max-width:768px){
-#hero{flex-direction:column-reverse;text-align:center;gap:30px;padding-top:100px}
-.ctas{justify-content:center}
-.hsub{margin:0 auto 32px}
-.nl{display:none;position:absolute;top:100%;left:0;width:100%;background:var(--g);backdrop-filter:blur(16px);flex-direction:column;padding:20px 8%;gap:16px;border-bottom:1px solid rgba(255,255,255,.04)}
-.nl.open{display:flex}
-.ham{display:flex}
-.fc{width:240px;padding:28px 20px}
-.pg,.sg{grid-template-columns:1fr}
-section{padding:60px 6%}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+  cursor: none;
+}
+a, button {
+  cursor: none;
+}
+
+/* Typography */
+h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; }
+p { color: var(--text-muted); font-size: 1rem; }
+a { text-decoration: none; color: inherit; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+/* Custom Cursor */
+.custom-cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--text-main);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 10px var(--text-main);
+}
+.custom-cursor-outline {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(129, 140, 248, 0.6);
+  border-radius: 50%;
+  position: fixed;
+  top: 0; left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+.custom-cursor-outline.hovering {
+  width: 60px; height: 60px;
+  background-color: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.8);
+}
+
+/* Ambient Background */
+.ambient-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, #0B0F19 0%, #030408 100%);
+  pointer-events: none;
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0; width: 100%;
+  padding: 20px 8%;
+  background: var(--bg-nav);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--text-main); }
+.ham {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.ham span {
+  width: 24px; height: 2px;
+  background: var(--text-main);
+  border-radius: 2px;
+}
+
+/* Sections */
+section { padding: 120px 8% 40px; }
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-title span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent-1);
+}
+.section-title::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border-light), transparent);
+}
+
+/* Hero Section */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 100px;
+  gap: 60px;
+}
+.hero-content { flex: 1; }
+.hero-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--accent-1);
+  margin-bottom: 24px;
+  background: var(--bg-card);
+}
+.hero-title {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+.hero-desc {
+  font-size: 1.15rem;
+  max-width: 540px;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+.btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-primary {
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(96, 165, 250, 0.2);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+}
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+
+/* Hero Image & Stats */
+.hero-visuals {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.hero-image-wrapper {
+  width: 320px;
+  height: 320px;
+  border-radius: 24px;
+  padding: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hero-image-wrapper:hover {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 20px 40px rgba(96, 165, 250, 0.3), 0 0 60px rgba(129, 140, 248, 0.2);
+  border-color: rgba(129, 140, 248, 0.5);
+}
+.hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  background-color: var(--bg-main); /* Fallback */
+}
+.stats-container {
+  display: flex;
+  gap: 24px;
+  background: var(--bg-card);
+  padding: 20px 32px;
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+}
+.stat-item { text-align: center; }
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+/* Cards Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+}
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+/* Skills */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+.tag:hover {
+  color: var(--accent-1);
+  border-color: rgba(96, 165, 250, 0.3);
+  background: rgba(96, 165, 250, 0.05);
+}
+
+/* Projects */
+.project-icon {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.project-desc {
+  flex: 1;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+.project-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+}
+.project-links a {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.project-links a:hover { color: var(--accent-1); }
+
+/* Timeline (Experience/Education) */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px; height: 100%;
+  background: var(--border-light);
+}
+.timeline-item {
+  padding-left: 40px;
+  margin-bottom: 48px;
+  position: relative;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -4px; top: 6px;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--accent-1);
+  box-shadow: 0 0 0 4px var(--bg-main);
+}
+.timeline-date {
+  font-size: 0.85rem;
+  color: var(--accent-1);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Certifications */
+.cert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.cert-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.cert-item:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+.cert-info h4 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.cert-info p { font-size: 0.85rem; }
+.cert-link {
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  transition: all 0.2s;
+}
+.cert-link:hover {
+  border-color: var(--accent-1);
+  color: var(--accent-1);
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.contact-card {
+  text-align: center;
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+.contact-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+.contact-icon {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 8%;
+  border-top: 1px solid var(--border-light);
+  margin-top: 60px;
+}
+footer p { font-size: 0.9rem; }
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  #hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 120px;
+  }
+  .btn-group { justify-content: center; }
+  .hero-desc { margin: 0 auto 40px; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; width: 100%;
+    background: var(--bg-nav);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 24px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-links.open { display: flex; }
+  .ham { display: flex; }
 }
 </style>
 </head>
 <body>
-<div id="loader"><div class="l-init">ASV</div><div class="l-track"><div class="l-bar"></div></div></div>
-<div class="noise"></div>
-<div id="cbg"><canvas id="pCanvas"></canvas></div>
 
+<div class="custom-cursor-dot" id="cursorDot"></div>
+<div class="custom-cursor-outline" id="cursorOutline"></div>
 
-<nav>
-<div class="logo sy">ANIL.DEV</div>
-<button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
-<ul class="nl" id="navLinks">
-<li><a href="#hero">Home</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#certs">Certifications</a></li>
-<li><a href="#contact">Contact</a></li>
-<li><a href="https://drive.google.com/file/d/12ZME6vOodomqYlogWX8idWrDY2w49Utj/view?usp=sharing" target="_blank">AI Resume</a></li>
-<li><a href="https://drive.google.com/file/d/1aEKQrGM2sicvornTl_tGLl5vrLR6hqBe/view?usp=sharing" target="_blank">Full Stack Resume</a></li>
-</ul>
+<canvas id="galaxyCanvas" class="ambient-bg"></canvas>
+
+<nav id="navbar">
+  <div class="logo">ANIL.DEV</div>
+  <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
 <section id="hero">
-<div class="hl">
-<div class="htag">Java Backend Developer | Spring Boot &bull; REST APIs &bull; Scalable Systems</div>
-<h1 class="hname sy">Anil Sai Vallabhu</h1>
-<p class="hsub">Final-year Software Engineering student at VIT building scalable backend systems using Spring Boot.</p>
-<div class="ctas">
-<a href="#projects" class="btn bf">View Projects</a>
-<a href="mailto:vallabhuanilsai2@gmail.com" class="btn bg">Let's Talk</a>
-<a href="https://github.com/vallabhuanil" class="btn bg" target="_blank">GitHub</a>
-<a href="https://drive.google.com/file/d/12ZME6vOodomqYlogWX8idWrDY2w49Utj/view?usp=sharing" class="btn bg" target="_blank">AI Resume</a>
-<a href="https://drive.google.com/file/d/1aEKQrGM2sicvornTl_tGLl5vrLR6hqBe/view?usp=sharing" class="btn bg" target="_blank">Full Stack Resume</a>
-</div>
-</div>
-<div class="hr">
-<div class="fc">
-<div class="si"><div class="sv">8.48</div><div class="sl">CGPA @ VIT</div></div>
-<div class="si"><div class="sv">2nd</div><div class="sl">Postathon Rank</div></div>
-<div class="si"><div class="sv">93.55%</div><div class="sl">CNN Accuracy</div></div>
-<div class="si"><div class="sv">5+</div><div class="sl">Certifications</div></div>
-</div>
-</div>
+  <div class="hero-content reveal">
+    <div class="hero-tag">Java Backend Developer | AI Engineer</div>
+    <h1 class="hero-title">Anil Sai Vallabhu</h1>
+    <p class="hero-desc">Final-year Software Engineering student at VIT with a strong passion for both AI Engineering and scalable Backend Architecture. Building intelligent, secure systems using Spring Boot, modern cloud technologies, and cutting-edge ML models.</p>
+    
+    <div class="btn-group">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:vallabhuanilsai2@gmail.com" class="btn btn-secondary">Contact Me</a>
+      <a href="https://github.com/vallabhuanil" class="btn btn-secondary" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/vallabhu-anil-sai-70a5a1366" class="btn btn-secondary" target="_blank">LinkedIn</a>
+      <a href="https://drive.google.com/file/d/12ZME6vOodomqYlogWX8idWrDY2w49Utj/view?usp=sharing" class="btn btn-secondary" target="_blank">AI Resume</a>
+      <a href="https://drive.google.com/file/d/1aEKQrGM2sicvornTl_tGLl5vrLR6hqBe/view?usp=sharing" class="btn btn-secondary" target="_blank">Full Stack Resume</a>
+    </div>
+  </div>
+  
+  <div class="hero-visuals reveal" style="transition-delay: 0.2s">
+    <div class="hero-image-wrapper">
+      <img src="profile.jpg" alt="Anil Sai Vallabhu">
+    </div>
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-value">8.48</div>
+        <div class="stat-label">CGPA @ VIT</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">2nd</div>
+        <div class="stat-label">Postathon</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">5+</div>
+        <div class="stat-label">Certs</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="skills">
-<h2 class="st sy"><span class="nu">01</span>Technical Arsenal</h2>
-<div class="sg">
-<div class="skc reveal">
-<h3>Programming Languages</h3>
-<div class="chips">
-<span class="chip">Java (OOP, Collections)</span><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">JavaScript</span>
-</div>
-</div>
-<div class="skc reveal">
-<h3>Backend &amp; System</h3>
-<div class="chips">
-<span class="chip">Spring Boot</span><span class="chip">FastAPI</span><span class="chip">Hibernate</span><span class="chip">REST APIs</span><span class="chip">MVC Architecture</span><span class="chip">Linux/Ubuntu</span><span class="chip">Windows</span>
-</div>
-</div>
-<div class="skc reveal">
-<h3>AI/ML &amp; Generative AI</h3>
-<div class="chips">
-<span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">Scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">Deep Learning</span><span class="chip">NLP</span><span class="chip">LLMs</span><span class="chip">RAG</span><span class="chip">Transformers</span><span class="chip">Prompt Engineering</span><span class="chip">LangChain</span><span class="chip">Vector DBs (FAISS, ChromaDB)</span><span class="chip">GenAI Integration</span>
-</div>
-</div>
-<div class="skc reveal">
-<h3>Tools &amp; Platforms</h3>
-<div class="chips">
-<span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Docker</span><span class="chip">Maven</span><span class="chip">Postman</span><span class="chip">VS Code</span>
-</div>
-</div>
-<div class="skc reveal" style="grid-column: 1 / -1;">
-<h3>Core &amp; Development Concepts</h3>
-<div class="chips">
-<span class="chip">Data Structures &amp; Algorithms</span><span class="chip">Operating Systems</span><span class="chip">Low Level Design (LLD)</span><span class="chip">System Design</span><span class="chip">Problem Solving</span><span class="chip">SDLC (Agile)</span><span class="chip">Microservices</span>
-</div>
-</div>
-</div>
+  <h2 class="section-title"><span>01</span> Technical Arsenal</h2>
+  <div class="grid">
+    <div class="card reveal">
+      <h3>Programming Languages</h3>
+      <div class="skill-tags">
+        <span class="tag">Java</span>
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">JavaScript</span>
+      </div>
+    </div>
+    <div class="card reveal">
+      <h3>Backend & Systems</h3>
+      <div class="skill-tags">
+        <span class="tag">Spring Boot</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Hibernate</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">Microservices</span>
+      </div>
+    </div>
+    <div class="card reveal">
+      <h3>AI & Machine Learning</h3>
+      <div class="skill-tags">
+        <span class="tag">TensorFlow</span>
+        <span class="tag">LLMs</span>
+        <span class="tag">RAG</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">Vector DBs</span>
+      </div>
+    </div>
+    <div class="card reveal">
+      <h3>Tools & DevOps</h3>
+      <div class="skill-tags">
+        <span class="tag">Git</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Jenkins</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">Linux</span>
+      </div>
+    </div>
+    <div class="card reveal" style="grid-column: 1 / -1;">
+      <h3>Core & Development Concepts</h3>
+      <div class="skill-tags">
+        <span class="tag">Data Structures & Algorithms</span>
+        <span class="tag">Operating Systems</span>
+        <span class="tag">System Design</span>
+        <span class="tag">Problem Solving</span>
+        <span class="tag">SDLC (Agile)</span>
+        <span class="tag">Microservices</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="projects">
-<h2 class="st sy"><span class="nu">02</span>Featured Work</h2>
-<div class="pg">
-<div class="pc reveal">
-<div class="pe">&#x1F6D2;</div>
-<h3>E-Commerce Platform</h3>
-<p class="ds">Built a full-stack e-commerce platform with product catalog, cart, and order workflows. Implemented JWT authentication, RBAC, and email OTP verification for secure access. Designed REST APIs with Spring Boot and optimized backend data handling using MySQL. Integrated Razorpay payments, Cloudinary storage, and Redis caching for improved performance.</p>
-<div class="chips"><span class="chip">Spring Boot</span><span class="chip">React</span><span class="chip">MySQL</span><span class="chip">Redis</span><span class="chip">Razorpay</span><span class="chip">JWT</span></div>
-<div class="chips" style="margin-top:10px">
-  <span class="chip">Security: JWT + OTP Verification</span>
-  <span class="chip">Storage: Cloudinary</span>
-  <span class="chip">Payments: Razorpay Integration</span>
-</div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil/ecommers_publicAccess" target="_blank">GitHub</a>
-  <a href="https://ecommers-full-stack-application.vercel.app/" target="_blank">Live Demo</a>
-</div>
-</div>
-<div class="pc reveal">
-<div class="pe">&#x1F4E6;</div>
-<h3>Postal Package Tracking System</h3>
-<p class="ds">Built a full-stack postal tracking system with OTP-based email authentication, real-time shipment tracking, WhatsApp Cloud API notifications, and RESTful backend services integrated with MySQL for scalable and secure operations.</p>
-<div class="chips"><span class="chip">React</span><span class="chip">MySQL</span><span class="chip">SMTP</span><span class="chip">WhatsApp API</span><span class="chip">REST</span></div>
-<div class="chips" style="margin-top:10px">
-  <span class="chip">Architecture: Client &rarr; API &rarr; Service &rarr; DB</span>
-  <span class="chip">Auth: OTP Email Verification</span>
-  <span class="chip">Notifications: WhatsApp Cloud API</span>
-</div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil/hackthon-Postathon" target="_blank">GitHub</a>
-  <a href="https://hackthon-postathon.vercel.app/" target="_blank">Live Demo</a>
-</div>
-</div>
-<div class="pc reveal">
-<div class="pe">&#x1FAC1;</div>
-<h3>Lung Nodule Detection using Deep Learning</h3>
-<p class="ds">Developed a CNN-based lung nodule detection model using DICOM CT scans from the LIDC-IDRI dataset and applied preprocessing techniques including resizing and normalization to achieve 93.55% accuracy.</p>
-<div class="chips"><span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">Keras</span><span class="chip">OpenCV</span><span class="chip">NumPy</span><span class="chip">Matplotlib</span></div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil/Lung-Nodule-Detection-using-Deep-Learning" target="_blank">GitHub</a>
-</div>
-</div>
-<div class="pc reveal">
-<div class="pe">&#x1F3D7;&#xFE0F;</div>
-<h3>Java Swing-Based Data Structure Selection and Operation System</h3>
-<p class="ds">Developed a modular Java Swing application demonstrating core data structure operations. Implemented ArrayList, Stack, Queue, and LinkedList functionalities using OOP principles.</p>
-<div class="chips"><span class="chip">Java</span><span class="chip">Swing</span><span class="chip">OOP</span><span class="chip">Collections</span><span class="chip">Layered Arch</span></div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil/Java-DataStructure-selection-and-operations-System" target="_blank">GitHub</a>
-</div>
-</div>
-<div class="pc reveal">
-<div class="pe">&#x1F680;</div>
-<h3>Enterprise DevSecOps CI/CD Dashboard</h3>
-<p class="ds">Built a full-stack Enterprise DevSecOps CI/CD Dashboard enabling repository onboarding, real-time pipeline orchestration, and deployment monitoring. Implemented automated BUILD, TEST, SECURITY SCAN, and DEPLOY workflows with live execution tracking and WebSocket-based log streaming. Secured the platform using JWT authentication and RBAC with Spring Security.</p>
-<div class="chips"><span class="chip">DevOps</span><span class="chip">Jenkins</span><span class="chip">Kubernetes</span><span class="chip">CI/CD</span><span class="chip">Git</span></div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil/Enterprise-DevSecOps-CICD-Dashboard" target="_blank">GitHub</a>
-</div>
-</div>
-<div class="pc reveal">
-<div class="pe">&#x1F916;</div>
-<h3>RAG-Based Document Q&A Assistant</h3>
-<p class="ds">Built a document Q&A assistant using Retrieval-Augmented Generation (RAG) for answering queries from uploaded documents by implementing document parsing, embedding generation, semantic retrieval using FAISS, and integrating LLM-based response generation with context grounding to reduce hallucinations.</p>
-<div class="chips"><span class="chip">AI</span><span class="chip">ML</span><span class="chip">LLM</span><span class="chip">RAG</span><span class="chip">Python</span></div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil/rag-document-qa-assistant" target="_blank">GitHub</a>
-</div>
-</div>
-<div class="pc reveal">
-<div class="pe">&#x1F3AF;</div>
-<h3>Assessment Recommendation System</h3>
-<p class="ds">Developed a FastAPI-based recommendation system to suggest SHL assessments from job descriptions by implementing FAISS-powered semantic search, a Retrieval-Augmented Generation (RAG) pipeline, and Gemini integration to support low-latency recommendation workflows with REST APIs.</p>
-<div class="chips"><span class="chip">ML</span><span class="chip">Python</span><span class="chip">AI</span><span class="chip">Data Science</span></div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil/Assessment_Recommendation_System" target="_blank">GitHub</a>
-</div>
-</div>
-<div class="pc reveal">
-<div class="pe">&#x1F331;</div>
-<h3>Smart Irrigation System</h3>
-<p class="ds">IoT and ML-integrated smart irrigation system utilizing LoRa technology for efficient water management and crop yield optimization.</p>
-<div class="chips"><span class="chip">IoT</span><span class="chip">Machine Learning</span><span class="chip">LoRa</span><span class="chip">AI</span></div>
-<div class="akl">
-  <a href="https://github.com/vallabhuanil/Smart-Irrigation-System-with-LoRa-and-Machine-Learning" target="_blank">GitHub</a>
-</div>
-</div>
-</div>
+  <h2 class="section-title"><span>02</span> Featured Work</h2>
+  <div class="grid">
+    <div class="card reveal">
+      <div class="project-icon">&#x1F6D2;</div>
+      <h3>E-Commerce Platform</h3>
+      <p class="project-desc">Built a full-stack platform with cart, orders, JWT auth, RBAC, and Razorpay integration. Optimized backend with MySQL and Redis caching.</p>
+      <div class="skill-tags">
+        <span class="tag">Spring Boot</span><span class="tag">React</span><span class="tag">Redis</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/vallabhuanil/ecommers_publicAccess" target="_blank">GitHub &rarr;</a>
+        <a href="https://ecommers-full-stack-application.vercel.app/" target="_blank">Live Demo &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="project-icon">&#x1F4E6;</div>
+      <h3>Postal Tracking System</h3>
+      <p class="project-desc">2nd Place at National Postathon. Real-time shipment tracking with OTP auth and WhatsApp Cloud API notifications.</p>
+      <div class="skill-tags">
+        <span class="tag">React</span><span class="tag">MySQL</span><span class="tag">WhatsApp API</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/vallabhuanil/hackthon-Postathon" target="_blank">GitHub &rarr;</a>
+        <a href="https://hackthon-postathon.vercel.app/" target="_blank">Live Demo &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="project-icon">&#x1F680;</div>
+      <h3>DevSecOps CI/CD Dashboard</h3>
+      <p class="project-desc">Enterprise dashboard for pipeline orchestration. Automated build, test, and security scan workflows with live WebSocket logs.</p>
+      <div class="skill-tags">
+        <span class="tag">Jenkins</span><span class="tag">Kubernetes</span><span class="tag">Spring Security</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/vallabhuanil/Enterprise-DevSecOps-CICD-Dashboard" target="_blank">GitHub &rarr;</a>
+      </div>
+    </div>
+    
+    <div class="card reveal">
+      <div class="project-icon">&#x1F916;</div>
+      <h3>RAG Document Assistant</h3>
+      <p class="project-desc">Q&A assistant using Retrieval-Augmented Generation. Implemented semantic retrieval using FAISS and LLM context grounding.</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">LLM</span><span class="tag">FAISS</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/vallabhuanil/rag-document-qa-assistant" target="_blank">GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="project-icon">&#x1FAC1;</div>
+      <h3>Lung Nodule Detection</h3>
+      <p class="project-desc">CNN-based lung nodule detection model using DICOM CT scans from the LIDC-IDRI dataset, achieving 93.55% accuracy.</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">OpenCV</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/vallabhuanil/Lung-Nodule-Detection-using-Deep-Learning" target="_blank">GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="project-icon">&#x1F3D7;&#xFE0F;</div>
+      <h3>Java Data Structures System</h3>
+      <p class="project-desc">Modular Java Swing application demonstrating core data structure operations like ArrayList, Stack, Queue, and LinkedList.</p>
+      <div class="skill-tags">
+        <span class="tag">Java</span><span class="tag">Swing</span><span class="tag">OOP</span><span class="tag">Collections</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/vallabhuanil/Java-DataStructure-selection-and-operations-System" target="_blank">GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="project-icon">&#x1F3AF;</div>
+      <h3>Assessment Recommendation</h3>
+      <p class="project-desc">FastAPI-based system suggesting SHL assessments from job descriptions using FAISS-powered semantic search and a RAG pipeline.</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">ML</span><span class="tag">FastAPI</span><span class="tag">FAISS</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/vallabhuanil/Assessment_Recommendation_System" target="_blank">GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <div class="project-icon">&#x1F331;</div>
+      <h3>Smart Irrigation System</h3>
+      <p class="project-desc">IoT and ML-integrated smart irrigation system utilizing LoRa technology for efficient water management and crop yield optimization.</p>
+      <div class="skill-tags">
+        <span class="tag">IoT</span><span class="tag">ML</span><span class="tag">LoRa</span><span class="tag">AI</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/vallabhuanil/Smart-Irrigation-System-with-LoRa-and-Machine-Learning" target="_blank">GitHub &rarr;</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="experience">
-<h2 class="st sy"><span class="nu">03</span>Timeline &amp; Milestones</h2>
-<div class="tl">
-<div class="ti"><div class="td">Sep 2022 Present</div><h3>Vellore Institute of Technology, Amaravati</h3><p>Integrated M.Tech in Software Engineering. Focus on Backend Systems, System Design, and Data Structures.</p></div>
-<div class="ti"><div class="td">Mar 2026</div><h3>National Postathon &mdash; 2nd Place</h3><p>Secured 2nd place among 150+ teams. Developed a full-stack postal tracking system with OTP authentication and WhatsApp API integration.</p></div>
-<div class="ti"><div class="td">2026</div><h3>Certification Milestones</h3><p>Completed Software Architecture (ScholarHat), System Design (Scaler), Java (Intellipaat, HackerRank), and SQL certifications.</p></div>
-<div class="ti"><div class="td">Aug 2020 &mdash; Jun 2022</div><h3>Narayana Junior College</h3><p>Board of Intermediate Education &mdash; Scored 91.8%</p></div>
-<div class="ti"><div class="td">2020</div><h3>St.Johns Model High School</h3><p>Secondary Education (BSEAP) &mdash; Scored 97.1%</p></div>
-</div>
-</section>
-
-<section id="education">
-<h2 class="st sy"><span class="nu">04</span>Education</h2>
-<div class="eg">
-<div class="ec reveal">
-<h3>Vellore Institute of Technology, Amaravati</h3>
-<div class="dg">Integrated M.Tech Software Engineering</div>
-<div class="mt">Sep 2022 Present</div>
-<span class="badge b1">CGPA: 8.48/10</span>
-</div>
-<div class="ec reveal">
-<h3>Narayana Junior College</h3>
-<div class="dg">Board of Intermediate Education</div>
-<div class="mt">Aug 2020 &mdash; Jun 2022</div>
-<span class="badge b2">91.8%</span>
-</div>
-<div class="ec reveal">
-<h3>St.Johns Model High School</h3>
-<div class="dg">Board of Secondary Education, Andhra Pradesh (BSEAP)</div>
-<div class="mt">Passed out in 2020</div>
-<span class="badge b2">97.1%</span>
-</div>
-</div>
-</section>
-
-<section id="achievements">
-<h2 class="st sy"><span class="nu">05</span>Achievements</h2>
-<div class="akc reveal">
-<h3><span style="font-size:1.4rem">&#x1F3C6;</span> Postathon (Indian Post) &mdash; 2nd Place</h3>
-<p style="color:var(--d);font-size:.9rem;margin-bottom:4px">Developed a full-stack postal tracking system with OTP authentication and WhatsApp API integration. Secured 2nd place among 150+ teams.</p>
-<div class="akl">
-<a href="https://drive.google.com/file/d/1D0vQAE24PB8eB4oWxA7Z8NjPNoA-mOrs/view" target="_blank">Certificate</a>
-<a href="https://github.com/vallabhuanil/ecommers_publicAccess" target="_blank">GitHub</a>
-<a href="https://hackthon-postathon.vercel.app/" target="_blank">Live Demo</a>
-</div>
-</div>
+  <h2 class="section-title"><span>03</span> Timeline & Education</h2>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Sep 2022 &mdash; Present</div>
+      <h3>Integrated M.Tech in Software Engineering</h3>
+      <p>Vellore Institute of Technology, Amaravati (CGPA: 8.48/10)</p>
+      <p style="margin-top: 8px; font-size: 0.9rem;">Focus on Backend Systems, System Design, and Data Structures.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Mar 2026</div>
+      <h3>National Postathon &mdash; 2nd Place</h3>
+      <p>Indian Post Hackathon</p>
+      <p style="margin-top: 8px; font-size: 0.9rem;">Developed a full-stack tracking system outperforming 150+ teams.</p>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">Aug 2020 &mdash; Jun 2022</div>
+      <h3>Board of Intermediate Education</h3>
+      <p>Narayana Junior College (Score: 91.8%)</p>
+    </div>
+  </div>
 </section>
 
 <section id="certs">
-<h2 class="st sy"><span class="nu">06</span>Certifications</h2>
-<div class="cg">
-<div class="cc reveal"><div><h4>Quora System Design Course</h4><div class="is">Scaler Topics â€” Mar 2026</div></div><a href="https://drive.google.com/file/d/11Y5Jf44rRcxr_CvHrLyzqlVMPVxJiZmn/view" class="cl" target="_blank">Verify</a></div>
-<div class="cc reveal"><div><h4>Software Architecture &amp; System Design</h4><div class="is">ScholarHat â€” Mar 2026</div></div><a href="https://drive.google.com/file/d/1-DUwTo7TZ-p4EFzIMQE5aYAyaIG2RG6b/view" class="cl" target="_blank">Verify</a></div>
-<div class="cc reveal"><div><h4>SQL using MySQL &amp; Database Design</h4><div class="is">Scaler Topics â€” Mar 2026</div></div><a href="https://drive.google.com/file/d/1HwZbd2lKdvXirIU7p4Kxr0bX-QzqB35t/view" class="cl" target="_blank">Verify</a></div>
-<div class="cc reveal"><div><h4>Java Certification</h4><div class="is">Intellipaat â€” Mar 2026</div></div><a href="https://drive.google.com/file/d/1a-q1FOauoTL53YjrT11qVDDZobrzWgpG/view" class="cl" target="_blank">Verify</a></div>
-<div class="cc reveal"><div><h4>Java (Basic)</h4><div class="is">HackerRank â€” Mar 2026</div></div><a href="https://drive.google.com/file/d/1AMbykWUxxu9KZPdlFItsGee72czvNeLu/view" class="cl" target="_blank">Verify</a></div>
-<div class="cc reveal"><div><h4>Career Essentials in Generative AI</h4><div class="is">Microsoft &amp; LinkedIn â€” Jun 2026</div></div><a href="https://www.linkedin.com/posts/vallabhu-anil-sai-70a5a1366_certificate-of-completion-activity-7474694668727873536-FpYU?utm_source=social_share_send&amp;utm_medium=member_desktop_web&amp;rcm=ACoAAFrbELoBZG6qbyrtPF6C-PutSAUOQJRytOI" class="cl" target="_blank">Verify</a></div>
-</div>
-</section>
-
-<section id="system">
-<h2 class="st sy"><span class="nu">08</span>System Design Exposure</h2>
-<div class="akc reveal">
-<h3>Scalable Backend Design</h3>
-<p style="color:var(--d);font-size:.9rem">
-Designed RESTful APIs with layered architecture (Controller &rarr; Service &rarr; Repository).
-Implemented Redis for efficient caching and JWT with RBAC for secure, scalable authentication.
-Optimized database performance through indexing and normalized relational schemas.
-</p>
-</div>
-</section>
-
-<section id="highlights">
-<h2 class="st sy"><span class="nu">09</span>Technical Highlights</h2>
-<div class="akc reveal">
-<p style="color:var(--d);font-size:.9rem">
-&bull; Developed a Full-Stack E-Commerce platform with JWT RBAC and Razorpay<br>
-&bull; Built REST APIs handling real-time tracking updates with WhatsApp API<br>
-&bull; Implemented secure OTP-based email verification system<br>
-&bull; Designed scalable relational database schemas for complex systems<br>
-&bull; Achieved 93.55% accuracy in CNN-based lung nodule detection
-</p>
-</div>
+  <h2 class="section-title"><span>04</span> Certifications</h2>
+  <div class="cert-list">
+    <div class="cert-item reveal">
+      <div class="cert-info">
+        <h4>System Design (Quora)</h4>
+        <p>Scaler Topics</p>
+      </div>
+      <a href="https://drive.google.com/file/d/11Y5Jf44rRcxr_CvHrLyzqlVMPVxJiZmn/view" class="cert-link" target="_blank">Verify</a>
+    </div>
+    <div class="cert-item reveal">
+      <div class="cert-info">
+        <h4>Software Architecture</h4>
+        <p>ScholarHat</p>
+      </div>
+      <a href="https://drive.google.com/file/d/1-DUwTo7TZ-p4EFzIMQE5aYAyaIG2RG6b/view" class="cert-link" target="_blank">Verify</a>
+    </div>
+    <div class="cert-item reveal">
+      <div class="cert-info">
+        <h4>Java Certification</h4>
+        <p>Intellipaat</p>
+      </div>
+      <a href="https://drive.google.com/file/d/1a-q1FOauoTL53YjrT11qVDDZobrzWgpG/view" class="cert-link" target="_blank">Verify</a>
+    </div>
+    <div class="cert-item reveal">
+      <div class="cert-info">
+        <h4>Generative AI Essentials</h4>
+        <p>Microsoft & LinkedIn</p>
+      </div>
+      <a href="https://www.linkedin.com/posts/vallabhu-anil-sai-70a5a1366_certificate-of-completion-activity-7474694668727873536-FpYU" class="cert-link" target="_blank">Verify</a>
+    </div>
+    <div class="cert-item reveal">
+      <div class="cert-info">
+        <h4>SQL using MySQL & Database Design</h4>
+        <p>Scaler Topics</p>
+      </div>
+      <a href="https://drive.google.com/file/d/1HwZbd2lKdvXirIU7p4Kxr0bX-QzqB35t/view" class="cert-link" target="_blank">Verify</a>
+    </div>
+    <div class="cert-item reveal">
+      <div class="cert-info">
+        <h4>Java (Basic)</h4>
+        <p>HackerRank</p>
+      </div>
+      <a href="https://drive.google.com/file/d/1AMbykWUxxu9KZPdlFItsGee72czvNeLu/view" class="cert-link" target="_blank">Verify</a>
+    </div>
+  </div>
 </section>
 
 <section id="contact">
-<div class="cw">
-<h2 class="st sy" style="justify-content:center"><span class="nu">10</span>Get In Touch</h2>
-<div class="aw"><div class="ac">ASV</div><div class="rr"></div><div class="rr"></div><div class="rr"></div></div>
-<div class="ctg">
-<a href="mailto:vallabhuanilsai2@gmail.com" class="ctc"><div class="ci">&#x2709;&#xFE0F;</div><div class="lb">Email</div><p>vallabhuanilsai2@gmail.com</p></a>
-<a href="https://www.linkedin.com/in/vallabhu-anil-sai-70a5a1366" target="_blank" class="ctc"><div class="ci">&#x1F517;</div><div class="lb">LinkedIn</div><p>vallabhu-anil-sai</p></a>
-<a href="https://github.com/vallabhuanil" target="_blank" class="ctc"><div class="ci">&#x1F4BB;</div><div class="lb">GitHub</div><p>vallabhuanil</p></a>
-<div class="ctc"><div class="ci">&#x1F4F1;</div><div class="lb">Phone</div><p>+91-8374683527</p></div>
-</div>
-</div>
+  <h2 class="section-title"><span>05</span> Get In Touch</h2>
+  <div class="contact-grid">
+    <a href="mailto:vallabhuanilsai2@gmail.com" class="card contact-card reveal">
+      <div class="contact-icon">&#x2709;&#xFE0F;</div>
+      <h3>Email</h3>
+      <p>vallabhuanilsai2@gmail.com</p>
+    </a>
+    <a href="https://www.linkedin.com/in/vallabhu-anil-sai-70a5a1366" target="_blank" class="card contact-card reveal">
+      <div class="contact-icon">&#x1F517;</div>
+      <h3>LinkedIn</h3>
+      <p>vallabhu-anil-sai</p>
+    </a>
+    <a href="https://github.com/vallabhuanil" target="_blank" class="card contact-card reveal">
+      <div class="contact-icon">&#x1F4BB;</div>
+      <h3>GitHub</h3>
+      <p>vallabhuanil</p>
+    </a>
+  </div>
 </section>
 
-<footer><p>&copy; 2026 Anil Sai Vallabhu. Built with Caffeine &amp; Code.</p></footer>
-<script>
-// Loader
-window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hid')},2200)});
+<footer>
+  <p>&copy; 2026 Anil Sai Vallabhu. Built with Caffeine & Code.</p>
+</footer>
 
-// Hamburger
-document.getElementById('hamBtn').addEventListener('click',()=>{document.getElementById('navLinks').classList.toggle('open')});
-document.querySelectorAll('.nl a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navLinks').classList.remove('open')}));
-// Particles
-const cv=document.getElementById('pCanvas'),c=cv.getContext('2d');let pts=[];
-function rsz(){cv.width=innerWidth;cv.height=innerHeight}
-addEventListener('resize',rsz);rsz();
-class P{constructor(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.r=Math.random()*1.8+.2}
-update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width)this.vx*=-1;if(this.y<0||this.y>cv.height)this.vy*=-1}
-draw(){c.beginPath();c.arc(this.x,this.y,this.r,0,Math.PI*2);c.fillStyle='rgba(99,102,241,.35)';c.fill()}}
-for(let i=0;i<70;i++)pts.push(new P);
-(function anim(){c.clearRect(0,0,cv.width,cv.height);for(let i=0;i<pts.length;i++){pts[i].update();pts[i].draw();for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){c.beginPath();c.moveTo(pts[i].x,pts[i].y);c.lineTo(pts[j].x,pts[j].y);c.strokeStyle=`rgba(99,102,241,${.08*(1-d/120)})`;c.stroke()}}}requestAnimationFrame(anim)})();
-// IntersectionObserver for skills + reveals
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.bf2').forEach(f=>f.style.width=f.dataset.w);e.target.classList.add('vis')}})},{threshold:.15});
-document.querySelectorAll('.reveal,.ti').forEach(el=>io.observe(el));
-// Skill section observer
-const so=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.bf2').forEach(f=>f.style.width=f.dataset.w)}})},{threshold:.2});
-document.querySelectorAll('.skc').forEach(el=>so.observe(el));
+<script>
+  // Mobile Menu
+  const hamBtn = document.getElementById('hamBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Navbar Scroll Effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.style.background = 'rgba(11, 15, 25, 0.9)';
+      navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+    } else {
+      navbar.style.background = 'rgba(11, 15, 25, 0.7)';
+      navbar.style.boxShadow = 'none';
+    }
+  });
+
+  // Reveal Elements on Scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Galaxy Background with Cursor Glow
+  const canvas = document.getElementById('galaxyCanvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let stars = [];
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Star {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 1.5;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
+      this.opacity = Math.random();
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x < 0) this.x = width;
+      if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height;
+      if (this.y > height) this.y = 0;
+      this.opacity += (Math.random() - 0.5) * 0.05;
+      if (this.opacity < 0.4) this.opacity = 0.4;
+      if (this.opacity > 1.0) this.opacity = 1.0;
+    }
+    draw() {
+      ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  // Reduced to 100 for better Plexus performance
+  for (let i = 0; i < 100; i++) {
+    stars.push(new Star());
+  }
+
+  let mouseX = width / 2;
+  let mouseY = height / 2;
+  const cursorDot = document.getElementById('cursorDot');
+  const cursorOutline = document.getElementById('cursorOutline');
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Custom cursor movement
+    cursorDot.style.left = `${mouseX}px`;
+    cursorDot.style.top = `${mouseY}px`;
+    
+    // Smooth trailing outline
+    cursorOutline.animate({
+      left: `${mouseX}px`,
+      top: `${mouseY}px`
+    }, { duration: 500, fill: "forwards" });
+  });
+
+  // Hover effect for interactive elements
+  document.querySelectorAll('a, button, .card, .hero-image-wrapper, .cert-item').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorOutline.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => cursorOutline.classList.remove('hovering'));
+  });
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    
+    // Update and draw stars
+    for (let i = 0; i < stars.length; i++) {
+      stars[i].update();
+      stars[i].draw();
+      
+      // Plexus connections between particles
+      for (let j = i; j < stars.length; j++) {
+        let dx = stars[i].x - stars[j].x;
+        let dy = stars[i].y - stars[j].y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 120) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(129, 140, 248, ${0.5 * (1 - distance/120)})`;
+          ctx.lineWidth = 1.5;
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
+          ctx.stroke();
+        }
+      }
+      
+      // Connection to mouse
+      let mouseDx = stars[i].x - mouseX;
+      let mouseDy = stars[i].y - mouseY;
+      let mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
+      
+      if (mouseDistance < 180) {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(96, 165, 250, ${0.8 * (1 - mouseDistance/180)})`;
+        ctx.lineWidth = 2;
+        ctx.moveTo(stars[i].x, stars[i].y);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.stroke();
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
 </script>
 </body>
 </html>
